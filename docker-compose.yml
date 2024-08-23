@@ -1,0 +1,26 @@
+version: "3.4"
+services:
+  webapp:
+    container_name: node_container
+    build: ./backend
+    ports:
+      - 3000:3000
+    depends_on:
+      - mongodb
+    restart: always
+    networks:
+      - node-api
+  mongodb:
+    container_name: mongo_container
+    image: mongo:latest
+    ports:
+      - 27018:27018
+    volumes:
+      - data:/data/db
+    networks:
+      - node-api
+networks:
+  node-api:
+    driver: bridge
+volumes:
+  data:
