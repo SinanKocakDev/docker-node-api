@@ -18,10 +18,6 @@ app.get("/test", (req,res) => {
   res.send("hello test")
 })
 
-
-// mongodb://mongo_container/dbTest
-// mongodb://localhost:27017/dockeriye
-
 mongoose
   .connect("mongodb://mongo_container/dbTest")
   .then(() => {
